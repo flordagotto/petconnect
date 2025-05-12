@@ -1,0 +1,10 @@
+services:
+  postgres-petconnect:
+    image: postgres:15
+    container_name: postgres-petconnect
+    ports:
+      - "5438:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: pet_connect

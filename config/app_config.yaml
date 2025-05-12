@@ -1,0 +1,45 @@
+url_config:
+  backend_url: !ENV ${BE_URL}
+  frontend_url: !ENV ${FE_URL}
+
+s3_config:
+  fake: false
+  bucket_name: !ENV ${S3_BUCKET_NAME}
+  aws_access_key_id: !ENV ${S3_AWS_ACCESS_KEY}
+  aws_secret_access_key: !ENV ${S3_AWS_ACCESS_SECRET}
+
+crypto:
+  token_secret: !ENV ${TOKEN_SECRET}
+  algorithm: 'HS256'
+
+database:
+  db: 'postgresql'
+  echo: false
+
+  pool:
+    max_overflow: 0
+    size: 5
+    recycle_sec: 3600
+    timeout_sec: 30
+
+  connection:
+    user: !ENV ${DB_USER}
+    password: !ENV ${DB_PASSWORD}
+    host: !ENV ${DB_HOST}
+    db_name: !ENV ${DB_NAME}
+    port: !ENV ${DB_PORT}
+
+email:
+  # 'sendgrid' or 'testing'
+  email_environment: !ENV ${EMAIL_ENVIRONMENT}
+  # 'prod' only, for testing we just log the mails
+  sendgrid_api_key: !ENV ${SENDGRID_API_KEY}
+  sendgrid_from_email: !ENV ${SENDGRID_FROM_EMAIL}
+
+mp_config:
+  access_token: !ENV ${ACCESS_TOKEN}
+  client_id: !ENV ${CLIENT_ID}
+  client_secret: !ENV ${CLIENT_SECRET}
+
+staff_config:
+  staff_email: !ENV ${STAFF_EMAIL}

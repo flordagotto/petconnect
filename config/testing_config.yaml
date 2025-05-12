@@ -1,0 +1,43 @@
+url_config:
+  backend_url: 'petconnect.icu/api'
+  frontend_url: 'petconnect.icu'
+
+s3_config:
+  fake: true
+  bucket_name: "test-bucket"
+  aws_access_key_id: "test_key"
+  aws_secret_access_key: "test_secret"
+
+crypto:
+  token_secret: 'test_token_secret'
+  algorithm: 'HS256'
+
+database:
+  db: 'postgresql'
+  echo: false
+
+  pool:
+    max_overflow: 0
+    size: 5
+    recycle_sec: 3600
+    timeout_sec: 30
+
+  connection:
+    user: 'root'
+    password: 'root'
+    host: 'localhost'
+    db_name: 'pet_connect_testing'
+    port: 5432
+
+email:
+  email_environment: 'local'
+  sendgrid_api_key: 'none :)'
+  sendgrid_from_email: 'none :)'
+
+mp_config:
+  access_token: 'TEST-449461715913702-091618-3a188ddb76241576aea87c2079825f2b-1359770936'
+  client_id: 'test_client_id'
+  client_secret: 'test_client_secret'
+
+staff_config:
+  staff_email: !ENV ${STAFF_EMAIL}

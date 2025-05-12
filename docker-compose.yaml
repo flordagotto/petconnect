@@ -1,0 +1,54 @@
+# Run BE and FE:
+services:
+  petconnect-be:
+    container_name: petconnect-be
+    image: goterom/petconnect-be:develop
+    environment:
+      # Database
+      - DB_HOST=undefined
+      - DB_NAME=undefined
+      - DB_PASSWORD=undefined
+      - DB_PORT=undefined
+      - DB_USER=undefined
+      # Sendgrid
+      - EMAIL_ENVIRONMENT=undefined
+      - SENDGRID_FROM_EMAIL=undefined
+      - SENDGRID_API_KEY=undefined
+      # Crypto
+      - TOKEN_SECRET=undefined
+      # Mercadopago
+      - ACCESS_TOKEN=undefined
+      - CLIENT_ID=undefined
+      - CLIENT_SECRET=undefined
+      # URLS
+      - BE_URL=http://localhost:8000;
+      - FE_URL=undefined
+      # S3
+      - S3_AWS_ACCESS_KEY=undefined
+      - S3_AWS_ACCESS_SECRET=undefined
+      - S3_BUCKET_NAME=undefined
+      # staff_config
+      - STAFF_EMAIL=petconnect.ar@gmail.com
+    ports:
+      - "8000:80"
+    networks:
+      - petconnect-net
+
+  petconnect-fe:
+    container_name: petconnect-fe
+    image: goterom/petconnect-fe:develop
+    ports:
+      - "8001:80"
+    networks:
+      - petconnect-net
+
+networks:
+  petconnect-net:
+    driver: bridge
+
+# To build image:
+# docker buildx build --platform linux/amd64,linux/arm64 --push -t goterom/petconnect-be:develop .
+
+# Additional commands:
+# https://blog.jaimyn.dev/how-to-build-multi-architecture-docker-images-on-an-m1-mac/#tldr;
+# docker buildx create --use

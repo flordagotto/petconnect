@@ -1,0 +1,13 @@
+{% extends "base_template.html" %}
+
+{% block main_content %}
+    <p style="font-size: 16px; text-align: center"><strong>¡Tu mascota fue vista!</strong></p>
+    <br>
+    <p>Un usuario de PET CONNECT ha visto a tu mascota y registró su última ubicación</p>
+    <p>Para más información, haz clic en el siguiente enlace: <a
+            href="{{ lost_pets_url }}"><span
+            style="text-decoration: underline; color: #1155CC"><strong>Haz clic aquí</strong></span></a>.</p>
+    <p>Atentamente,</p>
+    <p>PET CONNECT</p>
+    <br>
+{% endblock %}

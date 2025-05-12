@@ -1,0 +1,1 @@
+from .adopted_animals_view import AdoptedAnimalsViewFactory

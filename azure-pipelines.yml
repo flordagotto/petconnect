@@ -1,0 +1,59 @@
+trigger: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+resources:
+  containers:
+    - container: postgres
+      image: postgres:15
+      trigger: true
+      env:
+        POSTGRES_USER: root
+        POSTGRES_PASSWORD: root
+        POSTGRES_DB: pet_connect_testing
+      ports:
+        - 5432:5432
+      options: --name postgres
+jobs:
+
+  - job: 'Test'
+
+    services:
+      postgres: postgres
+
+    pool:
+      vmImage: 'ubuntu-latest'
+    strategy:
+      matrix:
+        Python310:
+          python.version: '3.10'
+
+    steps:
+      - task: UsePythonVersion@0
+        inputs:
+          versionSpec: '3.10'
+
+      - script: |
+          pip install -r requirements.txt
+          pip install pytest
+        displayName: Install requirements
+
+      - script: |
+          black --check  .
+        displayName: Check Black
+
+      - script: |
+          pycln --check --exclude __init__.py --all .
+        displayName: Check Pycln
+
+      - script: |
+          mypy --python-version 3.10 --config-file ./mypy.ini  .
+        displayName: Check MyPy
+
+      - script: |
+          pip install pytest pytest-azurepipelines
+          pytest \
+            --color=yes \
+            -W ignore::DeprecationWarning
+        displayName: Python tests

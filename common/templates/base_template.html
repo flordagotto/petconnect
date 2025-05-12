@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>PetConnect</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    {% block styles %}
+        <style type="text/css">
+            p[x-apple-data-detectors] {
+                color: inherit !important;
+            }
+
+            p {
+                color: #000000
+            }
+        </style>
+    {% endblock %}
+
+    {% block additional_styles %}
+    {% endblock %}
+
+</head>
+<body>
+
+{% block header %}
+    <p><strong>¡Hola {{ profile_name }}!</strong></p>
+    <br>
+{% endblock %}
+
+{% block petconnect_picture %}
+    <img src="https://petconnect.icu/assets/images/logo_app.png" alt="bienvenido" height="100px"
+         style="display: block; margin: 0 auto;">
+    <br>
+{% endblock %}
+
+{% block main_content %}
+{% endblock %}
+
+{% block signature %}
+    <p>--</p>
+    <p>Por favor, no respondas a este correo. Es una notificación automática del sistema.</p>
+{% endblock %}
+
+</body>
+</html>

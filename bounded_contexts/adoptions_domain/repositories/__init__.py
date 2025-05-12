@@ -1,0 +1,2 @@
+from .animals_repository import AdoptionAnimalsRepository
+from .adoption_applications_repository import AdoptionApplicationsRepository

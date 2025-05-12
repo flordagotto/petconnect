@@ -1,0 +1,1 @@
+from .initialize_bounded_contexts import initialize_contexts
